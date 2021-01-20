@@ -29,7 +29,9 @@ Find the top 5 highest observations of trees by legal_status, do some wrangling,
 top_5_status <- sf_trees %>% 
   count(legal_status) %>% 
   drop_na(legal_status) %>% 
-  rename(tree_count = n)
+  rename(tree_count = n) %>% 
+  relocate(tree_count) %>% 
+  slice_max(tree_count, n = 5)
 ```
 
-## Ended at 22:13 in week 1 lab video
+
